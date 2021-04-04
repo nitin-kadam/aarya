@@ -18,7 +18,7 @@ class CreateLeads extends Migration
             $table->enum('purpose_of_loan', ['PL', 'BL','HL','LAP','CAR LOAN','CREDIT CARD'])->nullable();
             $table->string('full_name')->nullable();
             $table->string('mobile_number')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('pan_no')->nullable();
             $table->string('mother_name')->nullable();
@@ -34,18 +34,25 @@ class CreateLeads extends Migration
             $table->string('company_name')->nullable();
             $table->string('disignation')->nullable();
             $table->string('gross_salary')->nullable();
-            $table->enum('deduction', ['GPF', 'SOC LOAN EMI','OTHER']);
+            $table->string('deduction_gpf')->nullable();
+            $table->string('deduction_soc_emi')->nullable();
+            $table->string('deduction_other')->nullable();
             $table->string('net_salary')->nullable();
             $table->enum('already_active_loan', ['HL EMI','PL EMI','OTHER EMI']);
             $table->string('ref_name')->nullable();
             $table->string('ref_address')->nullable();
             $table->string('ref_mobile')->nullable();
             $table->string('ref_pincode')->nullable();
+            $table->string('ref_name_one')->nullable();
+            $table->string('ref_address_one')->nullable();
+            $table->string('ref_mobile_one')->nullable();
+            $table->string('ref_pincode_one')->nullable();
             $table->string('senior_name')->nullable();
             $table->string('senior_mobile')->nullable();
             $table->string('senior_designation')->nullable();
             $table->integer('lead_allote')->nullable();
-            $table->text('narration')->nullable();
+            $table->string('cibil_score')->nullable();
+            $table->text('pdf')->nullable();
             $table->timestamps();
         });
     }

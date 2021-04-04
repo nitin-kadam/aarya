@@ -55,7 +55,8 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <form id="demo-form" action="{{ url('add_user_action')}}" method="POST" enctype="multipart/form-data">
+                    {{-- <form id="demo-form" action="{{ url('add_lead_action')}}" method="POST" enctype="multipart/form-data"> --}}
+                        <form id="demo-form" action="{{ url('add_lead_action')}}" method="POST" enctype="multipart/form-data">
                     <div class="col-sm-12 ">
                         <div class="col-md-6">
                             <label for="role">Purpose Of Loan * :</label>
@@ -73,7 +74,7 @@
                             @enderror
                         </div>
                             <div class="col-md-6">
-                                <label for="deduction">Full Name * :</label>
+                                <label for="full_name">Full Name * :</label>
                                 <input type="text" id="full_name" required class="form-control" placeholder="Full Name" name="full_name" value="{{old('full_name')}}" autocomplete="off" />
                                 @error('full_name')
                                 <div class="alert alert-danger" id="error">{{ $message }}</div>
@@ -152,16 +153,17 @@
                     <div class="col-sm-12 ">
                       <br>
                       <div class="col-md-6">
-                          <label for="landmark">Landmark :</label>
-                          <input type="text" id="landmark" class="form-control" name="landmark" placeholder="Landmark " value="{{old('landmark')}}" autocomplete="off" />
-                              @error('landmark')
-                          <div class="alert alert-danger" id="error">{{ $message }}</div>
-                              @enderror
-                      </div>
+                        <label for="pincode">Pincode :</label>
+                        <input type="text" id="pincode" class="form-control" name="pincode" placeholder="Pincode " value="{{old('pincode')}}" autocomplete="off" />
+                            @error('pincode')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                            @enderror
+                    </div>
+
                       <div class="col-md-6">
-                          <label for="city">City :</label>
-                          <input type="text" id="city" class="form-control" name="city" placeholder="City " value="{{old('city')}}" autocomplete="off" />
-                              @error('city')
+                          <label for="state">State :</label>
+                          <input type="text" id="state" class="form-control" name="state" placeholder="State " value="{{old('state')}}" autocomplete="off" />
+                              @error('state')
                           <div class="alert alert-danger" id="error">{{ $message }}</div>
                               @enderror
                       </div>
@@ -169,9 +171,16 @@
                   <div class="col-sm-12 ">
                     <br>
                     <div class="col-md-6">
-                        <label for="pincode">Pincode :</label>
-                        <input type="text" id="pincode" class="form-control" name="pincode" placeholder="Pincode " value="{{old('pincode')}}" autocomplete="off" />
-                            @error('pincode')
+                        <label for="city">City :</label>
+                        <input type="text" id="city" class="form-control" name="city" placeholder="City " value="{{old('city')}}" autocomplete="off" />
+                            @error('city')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                            @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label for="landmark">Landmark :</label>
+                        <input type="text" id="landmark" class="form-control" name="landmark" placeholder="Landmark " value="{{old('landmark')}}" autocomplete="off" />
+                            @error('landmark')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
@@ -187,9 +196,9 @@
                             @enderror
                     </div>
                     <div class="col-md-6">
-                        <label for="per_landmark">Permanant Ladmark :</label>
-                        <input type="text" id="per_landmark" class="form-control" name="per_landmark" placeholder="Permanant Ladmark " value="{{old('per_landmark')}}" autocomplete="off" />
-                            @error('per_landmark')
+                        <label for="per_state">Permanant State :</label>
+                        <input type="text" id="per_state" class="form-control" name="per_state" placeholder="Permanant State" value="{{old('per_state')}}" autocomplete="off" />
+                            @error('per_state')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
@@ -200,6 +209,13 @@
                         <label for="per_city">Permanant City :</label>
                         <input type="text" id="per_city" class="form-control" name="per_city" placeholder="Permanant City " value="{{old('per_city')}}" autocomplete="off" />
                             @error('per_city')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                            @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label for="per_landmark">Permanant Ladmark :</label>
+                        <input type="text" id="per_landmark" class="form-control" name="per_landmark" placeholder="Permanant Ladmark " value="{{old('per_landmark')}}" autocomplete="off" />
+                            @error('per_landmark')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
@@ -244,18 +260,31 @@
                 <div class="col-sm-12 ">
                     <br>
                     <div class="col-md-6">
-                        <label for="role">Deduction :</label>
-                        <select name="deduction" id="deduction" class="form-control">
-                        <option value="">Deduction </option>
-                        <option value="GPF">GPF</option>
-                        <option value="SOC LOAN EMI">SOC LOAN EMI</option>
-                        <option value="OTHER">OTHER</option>
-                    </select>
-                        @error('deduction')
-                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                        <label for="deduction_gpf">Deduction GPF :</label>
+                        <input type="text" id="deduction_gpf" class="form-control" name="deduction_gpf" placeholder="Deduction GPF " value="{{old('deduction_gpf')}}" autocomplete="off" />
+                        @error('deduction_gpf')
+                    <div class="alert alert-danger" id="error">{{ $message }}</div>
                         @enderror
                     </div>
 
+                    <div class="col-md-6">
+                        <label for="deduction_soc_emi">Deduction SOC EMI :</label>
+                        <input type="text" id="deduction_soc_emi" class="form-control" name="deduction_soc_emi" placeholder="Deduction SOC EMI" value="{{old('deduction_soc_emi')}}" autocomplete="off" />
+                            @error('deduction_soc_emi')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                            @enderror
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <br>
+                    <div class="col-md-6">
+                        <label for="deduction_other">Deduction Other :</label>
+                        <input type="text" id="deduction_other" class="form-control" name="deduction_other" placeholder="Deduction Other" value="{{old('deduction_other')}}" autocomplete="off" />
+                            @error('deduction_other')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                            @enderror
+                    </div>
                     <div class="col-md-6">
                         <label for="already_active_loan">Already Active Loan  :</label>
                         <select name="already_active_loan" id="already_active_loan" class="form-control">
@@ -269,13 +298,32 @@
                         @enderror
                     </div>
                 </div>
+
                 <div class="col-sm-12">
                     <br>
-                    <h2>Refrance Details</h2><br>
+                    <h2>Refrance Details Friends</h2><br>
                     <div class="col-md-6">
                         <label for="ref_name">Refrance  Name :</label>
                         <input type="text" id="ref_name" class="form-control" name="ref_name" placeholder="Refrance Name " value="{{old('ref_name')}}" autocomplete="off" />
                             @error('ref_name')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                            @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ref_mobile">Refrance  Mobile:</label>
+                        <input type="text" id="ref_mobile" class="form-control" name="ref_mobile" placeholder="Refrance Mobile " value="{{old('ref_mobile')}}" autocomplete="off" />
+                            @error('ref_mobile')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                            @enderror
+                    </div>
+
+                </div>
+                <div class="col-sm-12">
+                    <br>
+                    <div class="col-md-6">
+                        <label for="ref_pincode">Refrance Pincode  :</label>
+                        <input type="text" id="ref_pincode" class="form-control" name="ref_pincode" placeholder="Pincode " value="{{old('ref_pincode')}}" autocomplete="off" />
+                            @error('ref_pincode')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
@@ -289,17 +337,37 @@
                 </div>
                 <div class="col-sm-12">
                     <br>
+                    <h2>Refrance Relative</h2><br>
                     <div class="col-md-6">
-                        <label for="ref_mobile">Refrance  Mobile:</label>
-                        <input type="text" id="ref_mobile" class="form-control" name="ref_mobile" placeholder="Refrance Mobile " value="{{old('ref_mobile')}}" autocomplete="off" />
-                            @error('ref_mobile')
+                        <label for="ref_name_one">Refrance  Name :</label>
+                        <input type="text" id="ref_name_one" class="form-control" name="ref_name_one" placeholder="Refrance Name " value="{{old('ref_name_one')}}" autocomplete="off" />
+                            @error('ref_name_one')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
                     <div class="col-md-6">
-                        <label for="ref_pincode">Refrance Pincode  :</label>
-                        <input type="text" id="ref_pincode" class="form-control" name="ref_pincode" placeholder="Pincode " value="{{old('ref_pincode')}}" autocomplete="off" />
-                            @error('ref_pincode')
+                        <label for="ref_mobile_one">Refrance  Mobile:</label>
+                        <input type="text" id="ref_mobile_one" class="form-control" name="ref_mobile_one" placeholder="Refrance Mobile " value="{{old('ref_mobile_one')}}" autocomplete="off" />
+                            @error('ref_mobile_one')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                            @enderror
+                    </div>
+
+                </div>
+                <div class="col-sm-12">
+                    <br>
+
+                    <div class="col-md-6">
+                        <label for="ref_pincode_one">Refrance Pincode  :</label>
+                        <input type="text" id="ref_pincode_one" class="form-control" name="ref_pincode_one" placeholder="Pincode " value="{{old('ref_pincode_one')}}" autocomplete="off" />
+                            @error('ref_pincode_one')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                            @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label for="ref_address_one">Address :</label>
+                        <input type="text" id="ref_address_one" class="form-control" name="ref_address_one" placeholder="Address " value="{{old('ref_address_one')}}" autocomplete="off" />
+                            @error('ref_address_one')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
@@ -333,10 +401,12 @@
                     <div class="col-md-6">
                         <label for="lead_allote">Lead Allocate  * :</label>
                         <select name="lead_allote" required id="lead_allote" class="form-control">
-                            <option value="">Lead Allocate </option>
-                            <option value="HL EMI">HL EMI</option>
-                            <option value="PL EMI">PL EMI</option>
-                            <option value="OTHER EMI">OTHER EMI</option>
+                        <option value="">Lead Allocate </option>
+                           @if ($sales->isNotEmpty())
+                           @foreach ( $sales as $sel )
+                           <option value="{{$sel->id}}">{{$sel->name}}</option>
+                           @endforeach
+                           @endif
                         </select>
                         @error('lead_allote')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
@@ -345,6 +415,13 @@
                 </div>
                 <div class="col-sm-12 ">
                     <br>
+                    <div class="col-md-6">
+                        <label for="cibil_score">Cibil Score :</label>
+                        <input type="text" id="cibil_score" class="form-control" name="cibil_score" rows="3" placeholder="Cibil Score" value="{{old('cibil_score')}}" autocomplete="off" />
+                            @error('cibil_score')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                            @enderror
+                    </div>
 
                     <div class="col-md-6">
                         <label for="narration">Narration :</label>
