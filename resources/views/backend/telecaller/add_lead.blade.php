@@ -187,17 +187,17 @@
                 </div>
                 <div class="col-sm-12">
                     <br>
-                    <h2>Permanant Address</h2><br>
+                    <h2>Permanent Address</h2><br>
                     <div class="col-md-6">
-                        <label for="per_address">Permanant Address :</label>
-                        <input type="text" id="per_address" class="form-control" name="per_address" placeholder="Permanant Address " value="{{old('per_address')}}" autocomplete="off" />
+                        <label for="per_address">Permanent Address :</label>
+                        <input type="text" id="per_address" class="form-control" name="per_address" placeholder="Permanent Address " value="{{old('per_address')}}" autocomplete="off" />
                             @error('per_address')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
                     <div class="col-md-6">
-                        <label for="per_state">Permanant State :</label>
-                        <input type="text" id="per_state" class="form-control" name="per_state" placeholder="Permanant State" value="{{old('per_state')}}" autocomplete="off" />
+                        <label for="per_state">Permanent State :</label>
+                        <input type="text" id="per_state" class="form-control" name="per_state" placeholder="Permanent State" value="{{old('per_state')}}" autocomplete="off" />
                             @error('per_state')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
@@ -206,15 +206,15 @@
                 <div class="col-sm-12 ">
                     <br>
                     <div class="col-md-6">
-                        <label for="per_city">Permanant City :</label>
-                        <input type="text" id="per_city" class="form-control" name="per_city" placeholder="Permanant City " value="{{old('per_city')}}" autocomplete="off" />
+                        <label for="per_city">Permanent City :</label>
+                        <input type="text" id="per_city" class="form-control" name="per_city" placeholder="Permanent City " value="{{old('per_city')}}" autocomplete="off" />
                             @error('per_city')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
                     <div class="col-md-6">
-                        <label for="per_landmark">Permanant Ladmark :</label>
-                        <input type="text" id="per_landmark" class="form-control" name="per_landmark" placeholder="Permanant Ladmark " value="{{old('per_landmark')}}" autocomplete="off" />
+                        <label for="per_landmark">Permanent Landmark :</label>
+                        <input type="text" id="per_landmark" class="form-control" name="per_landmark" placeholder="Permanent Landmark " value="{{old('per_landmark')}}" autocomplete="off" />
                             @error('per_landmark')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
@@ -232,8 +232,8 @@
                             @enderror
                     </div>
                     <div class="col-md-6">
-                        <label for="disignation">Disignation* :</label>
-                        <input type="text" id="disignation" required class="form-control" name="disignation" placeholder="Disignation " value="{{old('disignation')}}" autocomplete="off" />
+                        <label for="disignation">Designation* :</label>
+                        <input type="text" id="disignation" required class="form-control" name="disignation" placeholder="Designation " value="{{old('disignation')}}" autocomplete="off" />
                             @error('disignation')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
@@ -301,17 +301,17 @@
 
                 <div class="col-sm-12">
                     <br>
-                    <h2>Refrance Details Friends</h2><br>
+                    <h2>Reference Details Friends</h2><br>
                     <div class="col-md-6">
-                        <label for="ref_name">Refrance  Name :</label>
-                        <input type="text" id="ref_name" class="form-control" name="ref_name" placeholder="Refrance Name " value="{{old('ref_name')}}" autocomplete="off" />
+                        <label for="ref_name">Reference  Name :</label>
+                        <input type="text" id="ref_name" class="form-control" name="ref_name" placeholder="Reference Name " value="{{old('ref_name')}}" autocomplete="off" />
                             @error('ref_name')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
                     <div class="col-md-6">
-                        <label for="ref_mobile">Refrance  Mobile:</label>
-                        <input type="text" id="ref_mobile" class="form-control" name="ref_mobile" placeholder="Refrance Mobile " value="{{old('ref_mobile')}}" autocomplete="off" />
+                        <label for="ref_mobile">Reference  Mobile:</label>
+                        <input type="text" id="ref_mobile" class="form-control" name="ref_mobile" placeholder="Reference Mobile " value="{{old('ref_mobile')}}" autocomplete="off" />
                             @error('ref_mobile')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
@@ -321,7 +321,7 @@
                 <div class="col-sm-12">
                     <br>
                     <div class="col-md-6">
-                        <label for="ref_pincode">Refrance Pincode  :</label>
+                        <label for="ref_pincode">Reference Pincode  :</label>
                         <input type="text" id="ref_pincode" class="form-control" name="ref_pincode" placeholder="Pincode " value="{{old('ref_pincode')}}" autocomplete="off" />
                             @error('ref_pincode')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
@@ -337,17 +337,17 @@
                 </div>
                 <div class="col-sm-12">
                     <br>
-                    <h2>Refrance Relative</h2><br>
+                    <h2>Reference Relative</h2><br>
                     <div class="col-md-6">
-                        <label for="ref_name_one">Refrance  Name :</label>
-                        <input type="text" id="ref_name_one" class="form-control" name="ref_name_one" placeholder="Refrance Name " value="{{old('ref_name_one')}}" autocomplete="off" />
+                        <label for="ref_name_one">Reference  Name :</label>
+                        <input type="text" id="ref_name_one" class="form-control" name="ref_name_one" placeholder="Reference Name " value="{{old('ref_name_one')}}" autocomplete="off" />
                             @error('ref_name_one')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
                     <div class="col-md-6">
-                        <label for="ref_mobile_one">Refrance  Mobile:</label>
-                        <input type="text" id="ref_mobile_one" class="form-control" name="ref_mobile_one" placeholder="Refrance Mobile " value="{{old('ref_mobile_one')}}" autocomplete="off" />
+                        <label for="ref_mobile_one">Reference  Mobile:</label>
+                        <input type="text" id="ref_mobile_one" class="form-control" name="ref_mobile_one" placeholder="Reference Mobile " value="{{old('ref_mobile_one')}}" autocomplete="off" />
                             @error('ref_mobile_one')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
@@ -358,7 +358,7 @@
                     <br>
 
                     <div class="col-md-6">
-                        <label for="ref_pincode_one">Refrance Pincode  :</label>
+                        <label for="ref_pincode_one">Reference Pincode  :</label>
                         <input type="text" id="ref_pincode_one" class="form-control" name="ref_pincode_one" placeholder="Pincode " value="{{old('ref_pincode_one')}}" autocomplete="off" />
                             @error('ref_pincode_one')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
