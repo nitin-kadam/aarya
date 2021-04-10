@@ -19,11 +19,11 @@ class CreateLeads extends Migration
             $table->string('full_name')->nullable();
             $table->string('mobile_number')->nullable();
             $table->string('email')->unique()->nullable();
-            $table->date('date_of_birth')->nullable();
+            $table->string('date_of_birth')->nullable();
             $table->string('pan_no')->nullable();
             $table->string('mother_name')->nullable();
             $table->string('spouse_details')->nullable();
-            $table->date('spouse_dob')->nullable();
+            $table->string('spouse_dob')->nullable();
             $table->string('res_address')->nullable();
             $table->string('landmark')->nullable();
             $table->string('city')->nullable();
@@ -53,6 +53,9 @@ class CreateLeads extends Migration
             $table->integer('lead_allote')->nullable();
             $table->string('cibil_score')->nullable();
             $table->text('pdf')->nullable();
+            $table->string('req_loan_amt')->nullable();
+            $table->string('Client_type')->nullable();
+           
             $table->timestamps();
         });
     }

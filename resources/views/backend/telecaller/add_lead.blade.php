@@ -103,7 +103,7 @@
                         <br>
                         <div class="col-md-6">
                             <label for="deduction">Date Of Birth  :</label>
-                            <input type="text" id="date_of_birth" class="form-control" placeholder="Date Of Birth" name="date_of_birth" value="{{old('date_of_birth')}}" autocomplete="off" />
+                            <input type="text" id="date_of_birth" class="form-control" placeholder="dd/mm/yyyy" name="date_of_birth" value="{{old('date_of_birth')}}" autocomplete="off" />
                             @error('date_of_birth')
                             <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
@@ -137,7 +137,7 @@
                         <br>
                         <div class="col-md-6">
                             <label for="spouse_dob">Spouse dob :</label>
-                            <input type="text" id="spouse_dob" class="form-control" name="spouse_dob" placeholder="Spouse Dob" value="{{old('spouse_dob')}}" autocomplete="off" />
+                            <input type="text" id="spouse_dob" class="form-control" name="spouse_dob" placeholder="dd/mm/yyyy" value="{{old('spouse_dob')}}" autocomplete="off" />
                                 @error('spouse_dob')
                             <div class="alert alert-danger" id="error">{{ $message }}</div>
                                 @enderror
@@ -398,6 +398,44 @@
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
+                   
+                </div>
+                <div class="col-sm-12 ">
+                        <div class="col-md-6">
+                            <label for="role">Client Type * :</label>
+                            <select name="client_type" required id="client_type" class="form-control">
+                            <option value="">Client Type </option>
+                            <option value="PL">Positive</option>
+                            <option value="BL">Negative</option>
+                            <option value="HL">Out Of Reach</option>
+                           
+                        </select>
+                            @error('client_type')
+                            <div class="alert alert-danger" id="error">{{ $message }}</div>
+                            @enderror
+                        </div>
+                            <div class="col-md-6">
+                                <label for="req_loan_amt">Required Loan Amount :</label>
+                                <input type="text" id="req_loan_amt" required class="form-control" placeholder="Required Loan Amount" name="req_loan_amt" value="{{old('req_loan_amt')}}" autocomplete="off" />
+                                @error('req_loan_amt')
+                                <div class="alert alert-danger" id="error">{{ $message }}</div>
+                                @enderror
+                            </div>
+                <div class="col-sm-12 ">
+                            <div class="col-md-6">
+                        <label for="branch_allote">Branch Allocate * :</label>
+                        <select name="branch_allote" required id="branch_allote" class="form-control">
+                        <option value="">Branch Allocate </option>
+                           @if ($sales->isNotEmpty())
+                           @foreach ( $sales as $sel )
+                           <option value="{{$sel->id}}">{{$sel->name}}</option>
+                           @endforeach
+                           @endif
+                        </select>
+                        @error('branch_allote')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <div class="col-md-6">
                         <label for="lead_allote">Lead Allocate  * :</label>
                         <select name="lead_allote" required id="lead_allote" class="form-control">
@@ -412,7 +450,8 @@
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                         @enderror
                     </div>
-                </div>
+                    </div>
+                    </div>
                 <div class="col-sm-12 ">
                     <br>
                     <div class="col-md-6">
