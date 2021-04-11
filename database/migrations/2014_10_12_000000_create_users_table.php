@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('mobile')->nullable();
             $table->string('image')->nullable();
             $table->boolean('status')->nullable();
+            $table->integer('branch_id')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->enum('role', ['Telecaller', 'Sales','Admin','Credit','Cibil','Login']);

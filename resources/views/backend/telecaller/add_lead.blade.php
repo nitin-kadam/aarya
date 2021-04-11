@@ -398,7 +398,7 @@
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
-                   
+
                 </div>
                 <div class="col-sm-12 ">
                         <div class="col-md-6">
@@ -408,7 +408,7 @@
                             <option value="PL">Positive</option>
                             <option value="BL">Negative</option>
                             <option value="HL">Out Of Reach</option>
-                           
+
                         </select>
                             @error('client_type')
                             <div class="alert alert-danger" id="error">{{ $message }}</div>
@@ -416,13 +416,14 @@
                         </div>
                             <div class="col-md-6">
                                 <label for="req_loan_amt">Required Loan Amount :</label>
-                                <input type="text" id="req_loan_amt" required class="form-control" placeholder="Required Loan Amount" name="req_loan_amt" value="{{old('req_loan_amt')}}" autocomplete="off" />
+                                <input type="text" id="req_loan_amt"  class="form-control" placeholder="Required Loan Amount" name="req_loan_amt" value="{{old('req_loan_amt')}}" autocomplete="off" />
                                 @error('req_loan_amt')
                                 <div class="alert alert-danger" id="error">{{ $message }}</div>
                                 @enderror
                             </div>
-                <div class="col-sm-12 ">
-                            <div class="col-md-6">
+                </div>
+                       <div class="col-sm-12 ">
+                        <div class="col-md-6">
                         <label for="branch_allote">Branch Allocate * :</label>
                         <select name="branch_allote" required id="branch_allote" class="form-control">
                         <option value="">Branch Allocate </option>
@@ -472,10 +473,11 @@
                 </div>
                      <div class="col-md-4">
                         <br>
+                        {{ csrf_field() }}
                     <input type="submit" class="btn btn-primary" name="submit" >
                     </div>
 
-                      {{ csrf_field() }}
+
 
 
 

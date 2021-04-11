@@ -71,7 +71,7 @@
                 <ul class="nav side-menu">
                   <li><a href="{{url('/dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard </a>
                   </li>
-                  <li><a href="{{url('/users')}}"><i class="fa fa-users"></i>Manage Users </a>  </li>
+                  <li><a href="{{url('/users')}}"><i class="fa fa-users"></i>Manage Employee </a>  </li>
                   {{-- <li><a href="{{url('/cms_list')}}"><i class="fa fa-desktop"></i>Manage CMS  </span></a></li> --}}
 
 

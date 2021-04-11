@@ -50,12 +50,13 @@ class CreateLeads extends Migration
             $table->string('senior_name')->nullable();
             $table->string('senior_mobile')->nullable();
             $table->string('senior_designation')->nullable();
-            $table->integer('lead_allote')->nullable();
+            $table->integer('lead_allocate')->nullable();
+            $table->integer('branch_allocate')->nullable();
             $table->string('cibil_score')->nullable();
             $table->text('pdf')->nullable();
             $table->string('req_loan_amt')->nullable();
-            $table->string('Client_type')->nullable();
-           
+            $table->string('client_type')->nullable();
+
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\BranchAddress;
 use Illuminate\Support\Facades\Auth;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
@@ -33,13 +34,13 @@ class AdminController extends Controller
 
    }
 
- public  function users(){
-  $users = User::latest()->orderBy('users.id', 'desc')->get();
-  return view('backend.admin.user.users',compact('users'));
-   }
+public  function users(){
+ $users = User::where('role','!=','Admin')->orderBy('id', 'desc')->get();
+ return view('backend.admin.user.users',compact('users'));
+}
  public function add_user(){
-    return view('backend.admin.user.add_user');
-
+    $branches = BranchAddress::orderBy('id', 'desc')->get();
+    return view('backend.admin.user.add_user',compact('branches'));
   }
 
  public function add_user_action(Request $request)
@@ -52,7 +53,7 @@ class AdminController extends Controller
                'address'=>'required',
                'mobile'=>'required',
                'role'=>'required',
-               // 'profile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+               'branch'=>'required',
 
    ];
 
@@ -80,10 +81,21 @@ class AdminController extends Controller
                 $imageName = 'public/admin_media/user.png';
 
             }
+            if($request->input('role')=="Sales" || $request->input('role')=="Telecaller"){
+                $MaxPayId = User::get()->max('emp_id');
+                if(isset($MaxPayId))  $MaxPayId = $MaxPayId+1;
+                else $MaxPayId = 101;
+            }
+
+
             $User = new User();
             $User->name=$request->input('username');
             $User->email=$request->input('email');
             $User->role=$request->input('role');
+            if(!empty($MaxPayId) && isset($MaxPayId)){
+                $User->emp_id=$MaxPayId;
+            }
+            $User->branch_id=$request->input('branch');
             $User->password=Hash::make($request->input('password'));
             $User->mobile=$request->input('mobile');
             $User->address=$request->input('address');
@@ -133,7 +145,8 @@ public function status_change_user(Request $request,$user_id,$status){
 
 public function edit_view_users(Request $request,$user_id){
   $user = User::latest()->where('id', $user_id)->first();
-  return view('backend.admin.user.edit_user',compact('user'));
+  $branches = BranchAddress::orderBy('id', 'desc')->get();
+  return view('backend.admin.user.edit_user',compact('user','branches'));
 }
 
 public function update(Request $request){
@@ -144,8 +157,9 @@ $rules=[
         'email' => 'required|unique:users,email,'.$id,
         'address'=>'required',
         'mobile'=>'required',
-        'role'=>'required'
-            ];
+        'role'=>'required',
+        'branch'=>'required'
+    ];
 
    $validation = Validator::make($inputs, $rules);
     if ($validation->fails())
@@ -186,6 +200,7 @@ $rules=[
                      }
                 $user->mobile=$request->input('mobile');
                 $user->address=$request->input('address');
+                $user->branch_id=$request->input('branch');
                 $user->image=$imageName;
                 if ($user->save()) {
                  $request->session()->flash('success', 'User Successfully Updated !!');

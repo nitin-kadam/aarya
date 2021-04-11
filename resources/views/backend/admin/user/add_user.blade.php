@@ -3,7 +3,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>add users</h3>
+                <h3>Add Employee</h3>
               </div>
 
               <div class="title_right">
@@ -38,7 +38,7 @@
 
              <div class="x_panel">
                   <div class="x_title">
-                    <h2>add users <small></small></h2>
+                    <h2>Add Employee <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -60,20 +60,20 @@
 
 
                       <label for="fullname">UserName * :</label>
-                      <input type="text" id="username" class="form-control" name="username" value="{{old('username')}}" autocomplete="off" />
+                      <input type="text" id="username" required="" class="form-control" name="username" value="{{old('username')}}" autocomplete="off" />
                        @error('username')
                       <div class="alert alert-danger" id="error">{{ $message }}</div>
                        @enderror
                       {{ csrf_field() }}
 
                       <label for="email">Email * :</label>
-                      <input type="email" id="email" class="form-control" name="email" value="{{old('email')}}" autocomplete="off">
+                      <input type="email" id="email" required="" class="form-control" name="email" value="{{old('email')}}" autocomplete="off">
                       @error('email')
                       <div class="alert alert-danger" id="email_error">{{ $message }}</div>
                       @enderror
 
                        <label for="password">Password * :</label>
-                      <input type="password" id="password" class="form-control" name="password" value="{{old('password')}}" autocomplete="off" />
+                      <input type="password" id="password" required="" class="form-control" name="password" value="{{old('password')}}" autocomplete="off" />
                       @error('password')
                       <div class="alert alert-danger" id="error">{{ $message }}</div>
                       @enderror
@@ -82,10 +82,24 @@
                         @error('mobile')
                       <div class="alert alert-danger" id="error">{{ $message }}</div>
                       @enderror
+                      <label for="branch">Select Branch  * :</label>
+                      <select name="branch" id="branch" required="" class="form-control">
+                        <option value="">Select Branch</option>
+                        @if ($branches->isNotEmpty())
+                           @foreach ( $branches as $branch )
+                           <option value="{{$branch->id}}">{{$branch->branch_address}}</option>
+                           @endforeach
+                        @endif
+                    </select>
+                        @error('branch')
+                      <div class="alert alert-danger" id="error">{{ $message }}</div>
+                      @enderror
+
+
                       <label for="role">Select Role  * :</label>
-                      <select name="role" id="role" class="form-control">
+                      <select name="role" id="role" required="" class="form-control">
                         <option value="">Select Role</option>
-                        <option value="Admin">Admin</option>
+                        {{-- <option value="Admin">Admin</option> --}}
                         <option value="Telecaller">Telecaller</option>
                         <option value="Sales">Sales</option>
                         <option value="Credit">Credit Department</option>
@@ -95,14 +109,15 @@
                         @error('role')
                       <div class="alert alert-danger" id="error">{{ $message }}</div>
                       @enderror
+
                       <label for="address">Address * :</label>
-                      <input type="text" id="address" class="form-control" name="address" value="{{old('address')}}" autocomplete="off">
+                      <input type="text" id="address" required="" class="form-control" name="address" value="{{old('address')}}" autocomplete="off">
                       @error('address')
                       <div class="alert alert-danger" id="error">{{ $message }}</div>
                       @enderror
 
                       <label for="profile">Profile * :</label>
-                      <input type="file" id="profile" class="form-control" name="profile" value="{{old('profile')}}">
+                      <input type="file" id="profile"  class="form-control" name="profile" value="{{old('profile')}}">
                        @error('profile')
                       <div class="alert alert-danger" id="error">{{ $message }}</div>
                          @enderror

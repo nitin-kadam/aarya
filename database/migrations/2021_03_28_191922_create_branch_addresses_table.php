@@ -16,6 +16,7 @@ class CreateBranchAddressesTable extends Migration
         Schema::create('branch_addresses', function (Blueprint $table) {
             $table->id();
             $table->string('branch_address');
+            $table->string('branch_code');
             $table->timestamps();
         });
     }

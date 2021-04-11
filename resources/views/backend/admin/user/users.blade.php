@@ -4,7 +4,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Users <small>List</small></h3>
+                <h3>Employee <small>List</small></h3>
               </div>
 
               <div class="title_right" >
@@ -38,7 +38,7 @@
 
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Users list</small></h2>
+                    <h2>Employee list</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -62,8 +62,8 @@
                     <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action" style="width:100%">
                       <thead>
                         <tr>
-                          {{-- <th>User Id</th> --}}
-                          <th>User Name</th>
+                          <th>Employee Code</th>
+                          <th>Emp Name</th>
                           <th>Email</th>
                           <th>Mobile</th>
                           <th>Address</th>
@@ -78,7 +78,7 @@
                        @php $p=1; @endphp
                         @foreach($users as $key =>  $user)
                         <tr>
-                          {{-- <td>{{ $p }}</td> --}}
+                          <td>{{($user->emp_id)?'DOA'.$user->emp_id:'--' }}</td>
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->email }}</td>
                           <td>{{ $user->mobile }}</td>

@@ -3,7 +3,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Update users</h3>
+                <h3>Update Employee</h3>
               </div>
 
               <div class="title_right">
@@ -38,7 +38,7 @@
 
              <div class="x_panel">
                   <div class="x_title">
-                    <h2>Update users <small></small></h2>
+                    <h2>Update Employee <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -82,10 +82,23 @@
                         @error('mobile')
                       <div class="alert alert-danger" id="error">{{ $message }}</div>
                       @enderror
+                      <label for="branch">Select Branch  * :</label>
+                      <select name="branch" id="branch" required="" class="form-control">
+                        <option value="">Select Branch</option>
+                        @if ($branches->isNotEmpty())
+                           @foreach ( $branches as $branch )
+                           <option value="{{$branch->id}}" {{ $user->branch_id == $branch->id ? 'selected' : ''}} >{{$branch->branch_address}}</option>
+                           @endforeach
+                        @endif
+                    </select>
+                        @error('branch')
+                      <div class="alert alert-danger" id="error">{{ $message }}</div>
+                      @enderror
+
                       <label for="role">Select Role  * :</label>
                       <select name="role" id="role" class="form-control">
                         <option value="">Select Role</option>
-                        <option value="Admin" {{$user->role == "Admin"  ? 'selected' : ''}} >Admin</option>
+                        {{-- <option value="Admin" {{$user->role == "Admin"  ? 'selected' : ''}} >Admin</option> --}}
                         <option value="Telecaller" {{$user->role == "Telecaller"  ? 'selected' : ''}}>Telecaller</option>
                         <option value="Sales" {{$user->role == "Sales"  ? 'selected' : ''}}>Sales</option>
                         <option value="Credit" {{$user->role == "Credit"  ? 'selected' : ''}}>Credit Department</option>
