@@ -82,7 +82,7 @@
                         @error('mobile')
                       <div class="alert alert-danger" id="error">{{ $message }}</div>
                       @enderror
-                      <label for="branch">Select Branch  * :</label>
+                      <label for="branch">Select Branc  * :</label>
                       <select name="branch" id="branch" required="" class="form-control">
                         <option value="">Select Branch</option>
                         @if ($branches->isNotEmpty())
