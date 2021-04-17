@@ -9,7 +9,6 @@
     <link rel="icon" href="{{ asset ('admin_media/production/images/favicon.ico')}}" type="image/ico" />
 
     <title>Neurotherapy health ! </title>
-
     <!-- Bootstrap -->
     <link href="{{ asset('admin_media/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Font Awesome -->
@@ -18,19 +17,14 @@
     <link href="{{ asset('admin_media/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
     <!-- iCheck -->
     <link href="{{ asset('admin_media/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
-
     <!-- bootstrap-progressbar -->
     <link href="{{ asset('admin_media/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
     <!-- JQVMap -->
     <link href="{{ asset('admin_media/vendors/jqvmap/dist/jqvmap.min.css')}}" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="{{ asset('admin_media/vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
-
     <!-- Custom Theme Style -->
     <link href="{{ asset('admin_media/build/css/custom.min.css')}}" rel="stylesheet">
-
-
-
      <link href="{{ asset('admin_media/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ asset('admin_media/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ asset('admin_media/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css')}}" rel="stylesheet">
