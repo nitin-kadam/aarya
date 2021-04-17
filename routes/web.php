@@ -49,6 +49,9 @@ Route::group(['middleware' => 'telecaller_auth'], function () {
     Route::get('/add_lead','backend\TelecallerController@add_lead');
     Route::post('/changePasswordactiontele','backend\TelecallerController@changePasswordactiontele');
     Route::post('/add_lead_action','backend\TelecallerController@add_lead_action');
+    Route::get('/get_sales_branches/{id}','backend\TelecallerController@get_sales_branches');
+    Route::get('/delete_lead/{lead_id}','backend\TelecallerController@delete_lead');
+    Route::get('/edit_view_lead/{lead_id}','backend\TelecallerController@edit_view_lead');
 
 });
 

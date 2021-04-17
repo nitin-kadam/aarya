@@ -3,7 +3,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Add Lead</h3>
+                <h3>Update Lead</h3>
               </div>
 
               <div class="title_right">
@@ -38,7 +38,7 @@
 
              <div class="x_panel">
                   <div class="x_title">
-                    <h2>Add Lead <small></small></h2>
+                    <h2>Update Lead <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>

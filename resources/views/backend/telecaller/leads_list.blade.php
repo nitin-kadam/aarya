@@ -62,9 +62,10 @@
                     <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action" style="width:100%">
                       <thead>
                         <tr>
+                          <th>Id</th>
                           <th>Purpose Of Loan</th>
                           <th>Full Name</th>
-                          <th>Email</th>
+                          {{-- <th>Email</th> --}}
                           <th>Mobile</th>
                           <th>Address</th>
                           <th>Actions</th>
@@ -73,31 +74,31 @@
 
 
                       <tbody>
-                       @if(!empty($users))
+                       @if(!empty($leads))
                        @php $p=1; @endphp
-                        @foreach($users as $key =>  $user)
+                        @foreach($leads as $key =>  $led)
                         <tr>
-                          {{-- <td>{{ $p }}</td> --}}
-                          <td>{{ $user->name }}</td>
-                          <td>{{ $user->email }}</td>
-                          <td>{{ $user->mobile }}</td>
-                          <td>{{ $user->address }}</td>
+                          <td>{{ $key+1 }}</td>
                           <td>
-                         @if($user->status == 1)
-                           {{ csrf_field() }}
-                           <input type="hidden" name="" value="{{ $status= 2   }}">
-                         <a onClick="return confirm('Are you sure you want to change status of this record ?')" href="{{url('/status_change_user/'.$user->id.'/'.$status) }}"><button class="btn btn-success status_button"   title="enable user" data-toggle="tooltip"><i class="fa fa-check"></i></button></a>
-                        @else
-                            {{ csrf_field() }}
-                           <input type="hidden" name="" value="{{ $status= 1   }}">
-                            <a onClick="return confirm('Are you sure you want to change status of this record ?')" href="{{url('/status_change_user/'.$user->id.'/'.$status) }}"><button class="btn btn-danger" title="disable user" data-toggle="tooltip"><i class="fa fa-close"></i></button></a>
-                        @endif
-                    </td>
-                          <td>  <a  href="{{ url('edit_view_users/'.$user->id) }}"><button class="btn btn-info"  title="edit user" data-toggle="tooltip" ><i class="fa fa-pencil"></i></button></a>
+                          @if ($led->purpose_of_loan =="CREDITCARD")
+                              {{ 'CREDIT CARD' }}
+                                @elseif ($led->purpose_of_loan =="CARLOAN")
+                                {{'CAR LOAD'}}
+                                @else
+                                {{$led->purpose_of_loan}}
+                          @endif
+                        </td>
 
-                          <a onClick="return confirm('Are you sure you want to delete this record ?')" href="{{ url('/delete_users/'.$user->id) }}"><button class="btn btn-danger" title="delet user" data-toggle="tooltip"><i class="fa fa-trash"></i></button></a>
+                          <td>{{ $led->full_name }}</td>
+                          {{-- <td>{{ $led->email }}</td> --}}
+                          <td>{{ $led->mobile_number }}</td>
+                          <td>{{ $led->per_address }}</td>
 
-                           <a href="{{ url('/view_users/'.$user->id) }}"><button class="btn btn-warning" title="view user" data-toggle="tooltip"><i class="fa fa-eye"></i></button></a>
+                          <td>  <a  href="{{ url('edit_view_lead/'.$led->id) }}"><button class="btn btn-info"  title="Edit Lead" data-toggle="tooltip" ><i class="fa fa-pencil"></i></button></a>
+
+                          <a onClick="return confirm('Are you sure you want to delete this record ?')" href="{{ url('/delete_lead/'.$led->id) }}"><button class="btn btn-danger" title="Delete Lead" data-toggle="tooltip"><i class="fa fa-trash"></i></button></a>
+
+                           {{-- <a href="{{ url('/view_users/'.$led->id) }}"><button class="btn btn-warning" title="View Lead" data-toggle="tooltip"><i class="fa fa-eye"></i></button></a> --}}
                           </td>
 
                       </tr>
