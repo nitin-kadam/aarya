@@ -81,12 +81,10 @@ public  function users(){
                 $imageName = 'public/admin_media/user.png';
 
             }
-            if($request->input('role')=="Sales" || $request->input('role')=="Telecaller"){
-                $MaxPayId = User::get()->max('emp_id');
-                if(isset($MaxPayId))  $MaxPayId = $MaxPayId+1;
-                else $MaxPayId = 101;
-            }
 
+            $MaxPayId = User::get()->max('emp_id');
+            if(isset($MaxPayId))  $MaxPayId = $MaxPayId+1;
+            else $MaxPayId = 101;
 
             $User = new User();
             $User->name=$request->input('username');

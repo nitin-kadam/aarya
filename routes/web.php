@@ -70,36 +70,7 @@ Route::group(['middleware' => 'check_auth'], function () {
     Route::post('/update','backend\AdminController@update');
     Route::get('/admin_setting','backend\AdminController@admin_setting');
     Route::post('/admin_setting_update','backend\AdminController@admin_setting_update');
-    Route::get('/cms_list/','backend\CmsController@cms_list');
-    Route::get('/add_cms_view/','backend\CmsController@add_cms_view');
-    Route::post('/add_cms_action/','backend\CmsController@add_cms_action');
-    Route::get('/view_cms/{cmsid}','backend\CmsController@view_cms');
-    Route::get('/edit_view_cms/{cmsid}','backend\CmsController@edit_view_cms');
-    Route::post('/update_cms_action','backend\CmsController@update_cms_action');
-    Route::get('/blog_list','backend\BlogController@blog_list');
-    Route::get('/add_blog_view','backend\BlogController@add_blog_view');
-    Route::post('/add_blog_action','backend\BlogController@add_blog_action');
-    Route::get('/edit_view_blog/{blogId}','backend\BlogController@edit_view_blog');
-    Route::get('/view_blog/{blogId}','backend\BlogController@view_blog');
-    Route::post('/edit_action','backend\BlogController@edit_action');
-    Route::get('/delete_blog/{blogId}','backend\BlogController@delete_blog');
-    Route::get('/services','backend\ServiceController@services');
-    Route::get('/add_service','backend\ServiceController@add_service');
-    Route::post('/service_action','backend\ServiceController@service_action');
-    Route::get('/view_service/{service_id}','backend\ServiceController@view_service');
-    Route::get('/edit_view_service/{service_id}','backend\ServiceController@edit_view_service');
-    Route::post('/service_update','backend\ServiceController@service_update');
-    Route::get('/delete_service/{services_id}','backend\ServiceController@delete_service');
-    Route::get('/clients_list','backend\ClientController@clients_list');
-    Route::get('/add_client','backend\ClientController@add_client');
-    Route::post('/client_action','backend\ClientController@client_action');
-    Route::post('/get_mesage','backend\PhotosController@get_mesage');
-    Route::get('/edit_view_client/{client_id}','backend\ClientController@edit_view_client');
-    Route::get('/view_client/{client_id}','backend\ClientController@view_client');
-    Route::get('/delete_client/{client_id}','backend\ClientController@delete_client');
-    Route::post('/update_action','backend\ClientController@update_action');
-
-});
+ });
 //login controoler
 Route::get('/admin','backend\LoginController@index');
 Route::post('/auth-check','backend\LoginController@auth_check');
