@@ -94,7 +94,7 @@ class TelecallerController extends Controller
     public function add_lead(){
         $branches = BranchAddress::orderBy('id', 'desc')->get();
         // $sales=User::select('id','name')->where('role','Sales')->get();
-        return view('backend.telecaller.add_lead',compact('sales','branches'));
+        return view('backend.telecaller.add_lead',compact('branches'));
     }
     public function delete_lead(Request $request,$lead_id){
         $user = Lead::where('id', $lead_id)->delete();

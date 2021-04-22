@@ -83,7 +83,7 @@
                           @if ($led->purpose_of_loan =="CREDITCARD")
                               {{ 'CREDIT CARD' }}
                                 @elseif ($led->purpose_of_loan =="CARLOAN")
-                                {{'CAR LOAD'}}
+                                {{'CAR LOAN'}}
                                 @else
                                 {{$led->purpose_of_loan}}
                           @endif
