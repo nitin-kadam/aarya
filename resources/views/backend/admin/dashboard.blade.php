@@ -10,23 +10,23 @@
           <div class="tile_count">
             <div class="col-md-3 col-sm-4  tile_stats_count">
               <span class="count_top"><i class="fa fa-user"></i> Total Leads</span>
-              <div class="count">250</div>
-              <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+              <div class="count">@if(isset($leads) && $leads > 0) {{$leads}} @else {{'0'}}@endif</div>
+              <span class="count_bottom"></span>
             </div>
             <div class="col-md-3 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-clock-o"></i> PL</span>
-              <div class="count">150</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-clock-o"></i> Today Leads</span>
+              <div class="count">@if(isset($todayLeads) && $todayLeads > 0) {{$todayLeads}} @else {{'0'}} @endif</div>
+              <span class="count_bottom"></i> </i> </span>
             </div>
             <div class="col-md-3 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> BL</span>
-              <div class="count green">70</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-user"></i>Total Sales</span>
+              <div class="count green">@if(isset($Sales) && $Sales > 0) {{$Sales}} @else {{'0'}}@endif</div>
+              <span class="count_bottom"></i> </i> </span>
             </div>
             <div class="col-md-3 col-sm-4  tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> HL</span>
-              <div class="count">30</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
+              <span class="count_top"><i class="fa fa-user"></i> Total Telecaller</span>
+              <div class="count">@if(isset($tele) && $tele > 0) {{$tele}} @else {{'0'}}@endif</div>
+              <span class="count_bottom"></i> </i> </span>
             </div>
           </div>
         </div>

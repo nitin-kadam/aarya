@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Lead;
 use App\BranchAddress;
 use Illuminate\Support\Facades\Auth;
 use Brian2694\Toastr\Facades\Toastr;
@@ -11,6 +12,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
@@ -25,7 +28,12 @@ class AdminController extends Controller
     }
 
  public  function index(){
-    return view('backend.admin.dashboard');
+    $user_id=Auth::user()->id;
+    $tele=User::OrderBy('id','DESC')->where('role','Telecaller')->get()->count();
+    $Sales=User::OrderBy('id','DESC')->where('role','Sales')->get()->count();
+    $leads=Lead::OrderBy('id','DESC')->get()->count();
+    $todayLeads=Lead::OrderBy('id','DESC')->whereDate('created_at', Carbon::today())->get()->count();
+    return view('backend.admin.dashboard',compact('leads','todayLeads','Sales','tele'));
    }
 
  public  function profile(){
@@ -81,12 +89,18 @@ public  function users(){
                 $imageName = 'public/admin_media/user.png';
 
             }
+<<<<<<< HEAD
             
                 $MaxPayId = User::get()->max('emp_id');
                 if(isset($MaxPayId))  $MaxPayId = $MaxPayId+1;
                 else $MaxPayId = 101;
             
+=======
+>>>>>>> 72bbe41f0b5cdd1c67d41d39189adf01aadae60f
 
+            $MaxPayId = User::get()->max('emp_id');
+            if(isset($MaxPayId))  $MaxPayId = $MaxPayId+1;
+            else $MaxPayId = 101;
 
             $User = new User();
             $User->name=$request->input('username');
