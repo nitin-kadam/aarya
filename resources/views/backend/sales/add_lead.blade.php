@@ -1,4 +1,4 @@
-@include('backend.telecaller.layout.header')
+@include('backend.sales.layout.header')
 <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
@@ -56,7 +56,7 @@
                   </div>
                   <div class="x_content">
                     {{-- <form id="demo-form" action="{{ url('add_lead_action')}}" method="POST" enctype="multipart/form-data"> --}}
-                        <form id="demo-form" action="{{ url('add_lead_action')}}" method="POST" enctype="multipart/form-data">
+                        <form id="demo-form" action="{{ url('add_lead_action_sales')}}" method="POST" enctype="multipart/form-data">
                     <div class="col-sm-12 ">
                         <div class="col-md-6">
                             <label for="role">Purpose Of Loan * :</label>
@@ -478,7 +478,7 @@
           </div>
         </div>
 
-@include('backend.telecaller.layout.footer')
+@include('backend.sales.layout.footer')
 <!-- <script src="{{('admin_media/form_validation/add_user.js')}}"></script> -->
 
 <script type="text/javascript">
@@ -489,10 +489,11 @@ setTimeout(function() {
 var url="{{url('')}}";
 function getSeales(id)
 {
+
         // $('select[name="branch_allote"]').on('change', function() {
             if(id) {
                 $.ajax({
-                    url: url+'/get_sales_branches/'+id,
+                    url: url+'/get_sales_branches_sales/'+id,
                     type: "GET",
                     dataType: "json",
                     success:function(data) {

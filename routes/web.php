@@ -38,17 +38,26 @@ Route::group(['middleware' => 'sales_auth'], function () {
     Route::get('/profile_sales','backend\SalesController@profile_sales');
     Route::get('/change_password_sales','backend\SalesController@change_password_sales');
     Route::post('/changePasswordactionSales','backend\SalesController@changePasswordactionSales');
+    Route::get('/leads_list_seals','backend\SalesController@leads_list');
+    Route::get('/add_lead_sales','backend\SalesController@add_lead');
+    Route::post('/add_lead_action_sales','backend\SalesController@add_lead_action_sales');
+    Route::post('/updated_lead_action_sales','backend\SalesController@updated_lead_action');
+    Route::get('/get_sales_branches_sales/{id}','backend\SalesController@get_sales_branches_sales');
+    Route::get('/delete_lead_sales/{lead_id}','backend\SalesController@delete_lead_sales');
+    Route::get('/edit_view_lead_sales/{lead_id}','backend\SalesController@edit_view_lead');
 
 });
 
 Route::group(['middleware' => 'telecaller_auth'], function () {
+
     Route::get('/telecaller-dashboard','backend\TelecallerController@index');
     Route::get('/profile_telecaller','backend\TelecallerController@profile_telecaller');
     Route::get('/change_password_telecaller','backend\TelecallerController@change_password_telecaller');
+    Route::post('/changePasswordactiontele','backend\TelecallerController@changePasswordactiontele');
     Route::get('/leads_list','backend\TelecallerController@leads_list');
     Route::get('/add_lead','backend\TelecallerController@add_lead');
-    Route::post('/changePasswordactiontele','backend\TelecallerController@changePasswordactiontele');
     Route::post('/add_lead_action','backend\TelecallerController@add_lead_action');
+    Route::post('/updated_lead_action','backend\TelecallerController@updated_lead_action');
     Route::get('/get_sales_branches/{id}','backend\TelecallerController@get_sales_branches');
     Route::get('/delete_lead/{lead_id}','backend\TelecallerController@delete_lead');
     Route::get('/edit_view_lead/{lead_id}','backend\TelecallerController@edit_view_lead');
