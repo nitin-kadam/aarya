@@ -65,9 +65,8 @@
                           <th>Id</th>
                           <th>Purpose Of Loan</th>
                           <th>Full Name</th>
-                          {{-- <th>Email</th> --}}
                           <th>Mobile</th>
-                          <th>Address</th>
+                          <th>Email</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -92,12 +91,17 @@
                           <td>{{ ($led->full_name)?$led->full_name:'--' }}</td>
                           {{-- <td>{{ $led->email }}</td> --}}
                           <td>{{ ($led->mobile_number)?$led->mobile_number:''}}</td>
-                          <td>{{ ($led->per_address)?$led->per_address:'--' }}</td>
+                          <td>{{ ($led->email)?$led->email:'--' }}</td>
 
-                          <td>  <a  href="{{ url('edit_view_lead_sales/'.$led->id) }}"><button class="btn btn-info"  title="Edit Lead" data-toggle="tooltip" ><i class="fa fa-pencil"></i></button></a>
+                          <td>
+                            @if (Auth::user()->role == "Cibil")
+                            <a  href="{{ url('edit_view_lead_cibil/'.$led->id) }}"><button class="btn btn-info"  title="Edit Lead" data-toggle="tooltip" ><i class="fa fa-pencil"></i></button></a>
+                            @endif
 
+                          @if (Auth::user()->role=="Sales")
+                          <a  href="{{ url('edit_view_lead_sales/'.$led->id) }}"><button class="btn btn-info"  title="Edit Lead" data-toggle="tooltip" ><i class="fa fa-pencil"></i></button></a>
                           <a onClick="return confirm('Are you sure you want to delete this record ?')" href="{{ url('/delete_lead_sales/'.$led->id) }}"><button class="btn btn-danger" title="Delete Lead" data-toggle="tooltip"><i class="fa fa-trash"></i></button></a>
-
+                            @endif
                            {{-- <a href="{{ url('/view_users/'.$led->id) }}"><button class="btn btn-warning" title="View Lead" data-toggle="tooltip"><i class="fa fa-eye"></i></button></a> --}}
                           </td>
 

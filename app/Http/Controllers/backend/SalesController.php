@@ -18,6 +18,7 @@ use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 
+
 class SalesController extends Controller
 {
     //
@@ -95,7 +96,7 @@ class SalesController extends Controller
     public function add_lead(){
         $branches = BranchAddress::orderBy('id', 'desc')->get();
         // $sales=User::select('id','name')->where('role','Sales')->get();
-        return view('backend.sales.add_lead',compact('sales','branches'));
+        return view('backend.sales.add_lead',compact('branches'));
     }
     public function delete_lead_sales(Request $request,$lead_id){
         $user = Lead::where('id', $lead_id)->delete();
@@ -110,13 +111,13 @@ class SalesController extends Controller
     public function add_lead_action_sales(Request $request){
         $inputs = $request->except('_token');
         $rules=[
-            'purpose_of_loan'=>'required',
-            'full_name'  => 'required',
-            'mobile_number'  => 'required',
+            'purpose_of_loan' =>'required',
+            'full_name'     => 'required',
+            'mobile_number' => 'required',
             'company_name'  => 'required',
-            'disignation'=>'required',
+            'disignation'   =>'required',
             'branch_allote' => 'required',
-            'lead_allote' => 'required'
+            'lead_allote'   => 'required'
         ];
 
        $validation = Validator::make($inputs, $rules);
@@ -170,6 +171,8 @@ class SalesController extends Controller
             $lead->req_loan_amt = $request->req_loan_amt;
             $lead->branch_allocate = $request->branch_allote;
             $lead->lead_allocate = $request->lead_allote;
+            $lead->is_query = $request->query_fix;
+            $lead->is_document = $request->document_collected;
             $lead->narration = $request->narration;
             $lead->cibil_score = $request->cibil_score;
             $lead->who_added = $user_id;
@@ -259,6 +262,8 @@ class SalesController extends Controller
             $lead->req_loan_amt = $request->req_loan_amt;
             $lead->branch_allocate = $request->branch_allote;
             $lead->lead_allocate = $request->lead_allote;
+            $lead->is_query = $request->query_fix;
+            $lead->is_document = $request->document_collected;
             $lead->narration = $request->narration;
             $lead->cibil_score = $request->cibil_score;
             $lead->who_added = $user_id;
@@ -274,5 +279,58 @@ class SalesController extends Controller
        }
 
     }
+
+    public function leads_list_cibil(){
+        $user_id=Auth::user()->id;
+        $leads=Lead::OrderBy('id','DESC')->get();
+        return view('backend.sales.leads_list',compact('leads'));
+    }
+
+    public function edit_view_lead_cibil(Request $request,$lead_id){
+        $lead = Lead::where('id', $lead_id)->first();
+        $lead->load('get_allocated');
+        $lead->load('get_added');
+        // return $lead;
+        $branches = BranchAddress::orderBy('id', 'desc')->get();
+        return view('backend.sales.edit_view_lead_cibil',compact('lead','branches'));
+      }
+      public function updated_cibil_action(Request $request){
+        $inputs = $request->except('_token');
+        $rules=[
+            'pdf_upload' => 'mimes:csv,txt,xlx,xls,pdf|max:2048',
+            'file_doable'  => 'required'
+        ];
+
+       $validation = Validator::make($inputs, $rules);
+       if($validation->fails())
+       {
+       return redirect()->back()->withErrors($validation)->withInput();
+       }else{
+        try{
+            $user_id=Auth::user()->id;
+            $lead_id=$request->lead_id;
+            $lead =Lead::find($lead_id);
+            $lead->file_doable = $request->file_doable;
+            $lead->cibil_score = $request->cibil_score;
+            if($request->hasFile('pdf_upload')){
+                $filepath = $request->file('pdf_upload');
+                $fileName = 'lead'.round(microtime(true)*10000) . str::random() . uniqid(rand()) . '.' . $filepath->getClientOriginalExtension();
+                Storage::disk('public')->put($fileName, File::get($filepath));
+                $lead->pdf = $fileName;
+            }
+            // return $lead;
+            $lead->save();
+            $request->session()->flash('success', ' lead updated successfully  !!');
+            return redirect('/leads_list_cibil');
+        }
+        catch(Exception $e){
+            $request->session()->flash('error', 'operation failed  !!');
+            return redirect()->back();
+        }
+
+       }
+
+    }
+
 
 }

@@ -66,7 +66,7 @@
                           <th>Emp Name</th>
                           <th>Email</th>
                           <th>Mobile</th>
-                          <th>Address</th>
+                          {{-- <th>Address</th> --}}
                           <th>Status</th>
                           <th>Actions</th>
                         </tr>
@@ -82,7 +82,7 @@
                           <td>{{ $user->name }}</td>
                           <td>{{ $user->email }}</td>
                           <td>{{ $user->mobile }}</td>
-                          <td>{{ $user->address }}</td>
+                          {{-- <td>{{ $user->address }}</td> --}}
                           <td>
                          @if($user->status == 1)
                            {{ csrf_field() }}

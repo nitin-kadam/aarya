@@ -83,8 +83,14 @@
 
                    </li>
 
-
+                   @if (Auth::user()->role=="Sales")
                    <li><a href="{{url('/leads_list_seals')}}"><i class="fa fa-dot-circle-o"></i>Manage Leads </span></a></li>
+                   @endif
+
+                   @if (Auth::user()->role == "Cibil")
+                   <li><a href="{{url('/leads_list_cibil')}}"><i class="fa fa-dot-circle-o"></i>Manage Leads </span></a></li>
+                   @endif
+
 
                 {{-- <li><a href="{{url('/services') }}"><i class="fa fa-tint"></i>Manage Services </span></a></li>
                 <li><a href="{{url('/clients_list')}}"><i class="fa fa-users"></i>Manage Happy Clients </a></li>
@@ -126,7 +132,7 @@
               <a data-toggle="tooltip" data-placement="top" title="Lock">
                 <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{('logout')}}">
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{url('logout')}}">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
               </a>
             </div>
@@ -150,7 +156,7 @@
                     <a class="dropdown-item"  href="{{ url('profile_sales')}}"> Profile</a>
 
                    <a class="dropdown-item"  href="{{ url('/change_password_sales')}}">Change Password</a>
-                    <a class="dropdown-item"  href="{{('logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    <a class="dropdown-item"  href="{{url('logout')}}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
                 </li>
 

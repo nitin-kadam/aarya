@@ -402,6 +402,7 @@
 
                 </div>
                 <div class="col-sm-12 ">
+                    <br>
                         <div class="col-md-6">
                             <label for="role">Client Type * :</label>
                             <select name="client_type" required id="client_type" class="form-control">
@@ -424,6 +425,7 @@
                             </div>
                 </div>
                        <div class="col-sm-12 ">
+                        <br>
                         <div class="col-md-6">
                         <label for="branch_allote">Branch Allocate * :</label>
                         <select name="branch_allote" required id="branch_allote" onchange="getSeales(this.value)" class="form-control">
@@ -448,6 +450,7 @@
                     </div>
                     </div>
                     </div>
+
                 <div class="col-sm-12 ">
                     <br>
                     <div class="col-md-6">
@@ -470,12 +473,35 @@
                     <br>
                     <div class="col-md-6">
                         <label for="cibil_score">Who Generate Lead :</label>
-                        <input type="text" id="cibil_score" class="form-control" readonly name="cibil_score" rows="3"  value="{{$lead->get_added->name}}" autocomplete="off" />
+                        <input type="text"  class="form-control" readonly   value="{{$lead->get_added->name}}" autocomplete="off" />
                             @error('cibil_score')
                         <div class="alert alert-danger" id="error">{{ $message }}</div>
                             @enderror
                     </div>
                 </div>
+                <div class="col-sm-12 ">
+                    <br>
+                    <div class="col-md-6">
+                        <label for="query_fix">Query Solve Or Not*:</label>
+                        <select name="query_fix" required id="query_fix" class="form-control">
+                        <option value="Yes" {{$lead->is_query == "Yes"  ? 'selected' : ''}}>Yes</option>
+                        <option value="No" {{$lead->is_query == "No"  ? 'selected' : ''}}>No</option>
+                    </select>
+                        @error('query_fix')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label for="role">Document Collected *:</label>
+                        <select name="document_collected"  required id="document_collected" class="form-control">
+                            <option value="Yes" {{$lead->is_document == "Yes"  ? 'selected' : ''}}>Yes</option>
+                            <option value="No" {{$lead->is_document == "No"  ? 'selected' : ''}}>No</option>
+                    </select>
+                        @error('client_type')
+                        <div class="alert alert-danger" id="error">{{ $message }}</div>
+                        @enderror
+                    </div>
+            </div>
                      <div class="col-md-4">
                         <br>
                         {{ csrf_field() }}

@@ -6,7 +6,7 @@
         <div class="right_col" role="main">
           <!-- top tiles -->
           <div class="row" style="display: inline-block;" >
-
+        @if (Auth::user()->role=="Sales")
           <div class="tile_count">
             <div class="col-md-6 col-sm-4  tile_stats_count">
               <span class="count_top">Total Leads</span>
@@ -20,7 +20,9 @@
             </div>
 
           </div>
+          @endif
         </div>
+
           <!-- /top tiles -->
 
           {{-- <div class="row">
