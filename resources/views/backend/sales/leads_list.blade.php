@@ -9,9 +9,9 @@
 
               <div class="title_right" >
 
-
+                @if (Auth::user()->role=="Sales")
 	             <a href="{{ url('add_lead_sales')}}"><button class="btn btn-primary" data-toggle="tooltip" title="Lead Ganerate" style="float: right;"><i class="fa fa-plus-circle"></i></button></a>
-
+                 @endif
               </div>
              </div>
 
