@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{ asset ('admin_media/production/images/favicon.ico')}}" type="image/ico" />
 
-    <title>Deals Of Aarya </title>
+    <title>Deals Of Arya </title>
 
     <!-- Bootstrap -->
     <link href="{{ asset('admin_media/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -40,7 +40,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{{('dashboard')}}" class="site_title"> <span>Deals Of Aarya</span></a>
+              <a href="{{('dashboard')}}" class="site_title"> <span>Deals Of Arya</span></a>
             </div>
 
             <div class="clearfix"></div>
