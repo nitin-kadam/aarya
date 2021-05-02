@@ -12,7 +12,8 @@ class Lead extends Model
         'res_address', 'landmark', 'city','city','pincode','per_state','per_address', 'per_landmark', 'per_city', 'company_name', 'disignation', 'gross_salary',
         'deduction_gpf', 'deduction_soc_emi', 'deduction_other', 'net_salary', 'already_active_loan', 'ref_name', 'ref_address', 'ref_mobile',
         'ref_pincode', 'ref_name_one', 'ref_address_one', 'ref_mobile_one', 'ref_pincode_one', 'senior_name', 'senior_mobile', 'senior_designation',
-        'lead_allocate', 'branch_allocate', 'cibil_score', 'pdf', 'req_loan_amt', 'client_type','narration','who_added','is_query','is_document','file_doable'
+        'lead_allocate', 'branch_allocate', 'cibil_score', 'pdf', 'req_loan_amt', 'client_type','narration','who_added','is_query','is_document','file_doable',
+        'application_no','los_no','login_bank_name','type','file_login','logindate'
     ];
 
     public function get_allocated(){

@@ -106,7 +106,7 @@
           <div class="row">
 
 
-            <div class="col-md-4 col-sm-4 ">
+            <div class="col-md-6 col-sm-6 ">
               <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
                   <h2>App Versions</h2>
@@ -213,7 +213,7 @@
               </div>
             </div>
 
-            <div class="col-md-4 col-sm-4 ">
+            <div class="col-md-6 col-sm-6 ">
               <div class="x_panel tile fixed_height_320 overflow_hidden">
                 <div class="x_title">
                   <h2>Device Usage</h2>
@@ -292,7 +292,7 @@
             </div>
 
 
-            <div class="col-md-4 col-sm-4 ">
+            {{-- <div class="col-md-4 col-sm-4 ">
               <div class="x_panel tile fixed_height_320">
                 <div class="x_title">
                   <h2>Quick Settings</h2>
@@ -340,12 +340,12 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> --}}
 
           </div>
 
 
-          <div class="row">
+          {{-- <div class="row">
             <!-- start of weather widget -->
                 <div class="col-md-6 col-sm-6 ">
                   <div class="x_panel">
@@ -517,7 +517,7 @@
               </div>
 
             </div>
-          </div>
+          </div> --}}
         </div>
         <!-- /page content -->
   @include('backend.admin.layout.footer')

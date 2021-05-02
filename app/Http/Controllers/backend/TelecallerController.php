@@ -91,6 +91,8 @@ class TelecallerController extends Controller
     public function leads_list(){
         $user_id=Auth::user()->id;
         $leads=Lead::OrderBy('id','DESC')->where('who_added',$user_id)->get();
+        $leads->load('get_added');
+        // return $leads;
         return view('backend.telecaller.leads_list',compact('leads'));
     }
     public function add_lead(){

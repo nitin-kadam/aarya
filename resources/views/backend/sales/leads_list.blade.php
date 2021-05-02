@@ -63,10 +63,22 @@
                       <thead>
                         <tr>
                           <th>Id</th>
+                          @if (Auth::user()->role == "Sales")
                           <th>Purpose Of Loan</th>
-                          <th>Full Name</th>
+                          <th>Name</th>
                           <th>Mobile</th>
-                          <th>Email</th>
+                          <th>City</th>
+                          <th>Who generated lead</th>
+                          <th>Document collected</th>
+                          @endif
+                          @if (Auth::user()->role == "Cibil")
+                          <th>Name</th>
+                          <th>Mobile</th>
+                          <th>City</th>
+                          <th>PanCard No</th>
+                          @endif
+
+
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -78,6 +90,7 @@
                         @foreach($leads as $key =>  $led)
                         <tr>
                           <td>{{ $key+1 }}</td>
+                          @if (Auth::user()->role == "Sales")
                           <td>
                           @if ($led->purpose_of_loan =="CREDITCARD")
                               {{ 'CREDIT CARD' }}
@@ -89,10 +102,17 @@
                         </td>
 
                           <td>{{ ($led->full_name)?$led->full_name:'--' }}</td>
-                          {{-- <td>{{ $led->email }}</td> --}}
                           <td>{{ ($led->mobile_number)?$led->mobile_number:''}}</td>
-                          <td>{{ ($led->email)?$led->email:'--' }}</td>
-
+                          <td>{{ ($led->city)?$led->city:'--' }}</td>
+                          <td>{{ ($led->get_added->name)?$led->get_added->name:'--' }}</td>
+                          <td>{{ ($led->is_document)?$led->is_document:'--' }}</td>
+                          @endif
+                          @if (Auth::user()->role == "Cibil")
+                          <td>{{ ($led->full_name)?$led->full_name:'--' }}</td>
+                          <td>{{ ($led->mobile_number)?$led->mobile_number:''}}</td>
+                          <td>{{ ($led->city)?$led->city:'--' }}</td>
+                          <td>{{ ($led->pan_no)?$led->pan_no:'--' }}</td>
+                          @endif
                           <td>
                             @if (Auth::user()->role == "Cibil")
                             <a  href="{{ url('edit_view_lead_cibil/'.$led->id) }}"><button class="btn btn-info"  title="Edit Lead" data-toggle="tooltip" ><i class="fa fa-pencil"></i></button></a>

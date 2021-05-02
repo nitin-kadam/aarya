@@ -57,6 +57,7 @@ class SalesController extends Controller
       $validation = Validator::make($inputs, $rules);
       if($validation->fails())
       {
+        $request->session()->flash('error', ' Something went wronge  !!');
       return redirect()->back()->withErrors($validation)->withInput();
 
       }else{
@@ -123,6 +124,7 @@ class SalesController extends Controller
        $validation = Validator::make($inputs, $rules);
        if($validation->fails())
        {
+        $request->session()->flash('error', ' Something went wronge  !!');
        return redirect()->back()->withErrors($validation)->withInput();
 
        }else{
@@ -213,6 +215,7 @@ class SalesController extends Controller
        $validation = Validator::make($inputs, $rules);
        if($validation->fails())
        {
+        $request->session()->flash('error', ' Something went wronge  !!');
        return redirect()->back()->withErrors($validation)->withInput();
 
        }else{
@@ -283,6 +286,7 @@ class SalesController extends Controller
     public function leads_list_cibil(){
         $user_id=Auth::user()->id;
         $leads=Lead::OrderBy('id','DESC')->get();
+        $leads->load('get_added');
         return view('backend.sales.leads_list',compact('leads'));
     }
 
@@ -304,6 +308,7 @@ class SalesController extends Controller
        $validation = Validator::make($inputs, $rules);
        if($validation->fails())
        {
+        $request->session()->flash('error', ' Something went wronge  !!');
        return redirect()->back()->withErrors($validation)->withInput();
        }else{
         try{
@@ -332,5 +337,58 @@ class SalesController extends Controller
 
     }
 
+    public function leads_list_login(){
+        $user_id=Auth::user()->id;
+        $leads=Lead::OrderBy('id','DESC')->get();
+        $leads->load('get_added');
+        return view('backend.sales.login_lead_list',compact('leads'));
+    }
 
+    public function login_edit(Request $request,$lead_id){
+        $lead = Lead::where('id', $lead_id)->first();
+        $lead->load('get_allocated');
+        $lead->load('get_added');
+        // return $lead;
+        $branches = BranchAddress::orderBy('id', 'desc')->get();
+        return view('backend.sales.login_edit',compact('lead','branches'));
+      }
+
+
+      public function updated_login_action(Request $request){
+        $inputs = $request->except('_token');
+        $rules=[
+            'application_number' => 'required',
+            'los_no'  => 'required',
+            'type'  => 'required',
+            'file_login'  => 'required',
+            'login_bank_name'  => 'required'
+        ];
+
+       $validation = Validator::make($inputs, $rules);
+       if($validation->fails())
+       {
+        $request->session()->flash('error', ' Something went wronge  !!');
+       return redirect()->back()->withErrors($validation)->withInput();
+       }else{
+        try{
+            $user_id=Auth::user()->id;
+            $lead =Lead::find($request->lead_id);
+            $lead->application_no = $request->application_number;
+            $lead->los_no = $request->los_no;
+            $lead->type = $request->type;
+            $lead->file_login = $request->file_login;
+            $lead->login_bank_name = $request->login_bank_name;
+            $lead->logindate = $request->logindate;
+            $lead->save();
+            $request->session()->flash('success', ' lead updated successfully  !!');
+            return redirect('/leads_list_login');
+        }
+        catch(Exception $e){
+            $request->session()->flash('error', 'operation failed  !!');
+            return redirect()->back();
+        }
+
+       }
+
+    }
 }

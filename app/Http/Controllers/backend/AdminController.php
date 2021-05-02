@@ -89,14 +89,6 @@ public  function users(){
                 $imageName = 'public/admin_media/user.png';
 
             }
-<<<<<<< HEAD
-            
-                $MaxPayId = User::get()->max('emp_id');
-                if(isset($MaxPayId))  $MaxPayId = $MaxPayId+1;
-                else $MaxPayId = 101;
-            
-=======
->>>>>>> 72bbe41f0b5cdd1c67d41d39189adf01aadae60f
 
             $MaxPayId = User::get()->max('emp_id');
             if(isset($MaxPayId))  $MaxPayId = $MaxPayId+1;

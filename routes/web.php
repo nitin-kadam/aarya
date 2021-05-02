@@ -45,9 +45,17 @@ Route::group(['middleware' => 'sales_auth'], function () {
     Route::get('/get_sales_branches_sales/{id}','backend\SalesController@get_sales_branches_sales');
     Route::get('/delete_lead_sales/{lead_id}','backend\SalesController@delete_lead_sales');
     Route::get('/edit_view_lead_sales/{lead_id}','backend\SalesController@edit_view_lead');
+
+    //Cibil Department
     Route::get('/leads_list_cibil','backend\SalesController@leads_list_cibil');
     Route::get('/edit_view_lead_cibil/{lead_id}','backend\SalesController@edit_view_lead_cibil');
     Route::post('/updated_cibil_action','backend\SalesController@updated_cibil_action');
+
+    //Login Department
+    Route::get('/leads_list_login','backend\SalesController@leads_list_login');
+    Route::get('/login_edit/{lead_id}','backend\SalesController@login_edit');
+    Route::post('/updated_login_action','backend\SalesController@updated_login_action');
+
 
 });
 

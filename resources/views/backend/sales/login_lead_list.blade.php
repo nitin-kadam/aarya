@@ -1,4 +1,4 @@
-@include('backend.telecaller.layout.header')
+@include('backend.sales.layout.header')
  <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
@@ -9,9 +9,9 @@
 
               <div class="title_right" >
 
-
-	             <a href="{{ url('add_lead')}}"><button class="btn btn-primary" data-toggle="tooltip" title="Lead Ganerate" style="float: right;"><i class="fa fa-plus-circle"></i></button></a>
-
+                @if (Auth::user()->role=="Sales")
+	             <a href="{{ url('add_lead_sales')}}"><button class="btn btn-primary" data-toggle="tooltip" title="Lead Ganerate" style="float: right;"><i class="fa fa-plus-circle"></i></button></a>
+                 @endif
               </div>
              </div>
 
@@ -63,12 +63,12 @@
                       <thead>
                         <tr>
                           <th>Id</th>
-                          <th>Purpose Of Loan</th>
                           <th>Name</th>
                           <th>Mobile</th>
                           <th>City</th>
-                          <th>Who generated lead</th>
-                          {{-- <th>Document collected</th> --}}
+                          <th>Los No</th>
+                          <th>Required Amount</th>
+                          <th>Login Bank Name</th>
                           <th>Actions</th>
                         </tr>
                       </thead>
@@ -80,24 +80,15 @@
                         @foreach($leads as $key =>  $led)
                         <tr>
                           <td>{{ $key+1 }}</td>
-                          <td>
-                          @if ($led->purpose_of_loan =="CREDITCARD")
-                              {{ 'CREDIT CARD' }}
-                                @elseif ($led->purpose_of_loan =="CARLOAN")
-                                {{'CAR LOAN'}}
-                                @else
-                                {{$led->purpose_of_loan}}
-                          @endif
-                        </td>
+                          <td>{{ ($led->full_name)?$led->full_name:'--' }}</td>
+                          <td>{{ ($led->mobile_number)?$led->mobile_number:''}}</td>
+                          <td>{{ ($led->city)?$led->city:'--' }}</td>
+                          <td>{{ ($led->los_no)?$led->los_no:'--' }}</td>
+                          <td>{{ ($led->req_loan_amt)?$led->req_loan_amt:'--' }}</td>
+                          <td>{{ ($led->login_bank_name)?$led->login_bank_name:'--' }}</td>
 
-                          <td>{{ $led->full_name }}</td>
-                          <td>{{ $led->mobile_number }}</td>
-                          <td>{{ $led->city }}</td>
-                          <td>{{ $led->get_added->name }}</td>
-                          {{-- <td>{{ $led->get_added->name }}</td> --}}
-                          <td>  <a  href="{{ url('edit_view_lead/'.$led->id) }}"><button class="btn btn-info"  title="Edit Lead" data-toggle="tooltip" ><i class="fa fa-pencil"></i></button></a>
-
-                          <a onClick="return confirm('Are you sure you want to delete this record ?')" href="{{ url('/delete_lead/'.$led->id) }}"><button class="btn btn-danger" title="Delete Lead" data-toggle="tooltip"><i class="fa fa-trash"></i></button></a>
+                          <td>  <a  href="{{ url('login_edit/'.$led->id) }}"><button class="btn btn-info"  title="Edit Lead" data-toggle="tooltip" ><i class="fa fa-pencil"></i></button></a>
+                          {{-- <a onClick="return confirm('Are you sure you want to delete this record ?')" href="{{ url('/delete_lead_sales/'.$led->id) }}"><button class="btn btn-danger" title="Delete Lead" data-toggle="tooltip"><i class="fa fa-trash"></i></button></a> --}}
 
                            {{-- <a href="{{ url('/view_users/'.$led->id) }}"><button class="btn btn-warning" title="View Lead" data-toggle="tooltip"><i class="fa fa-eye"></i></button></a> --}}
                           </td>
@@ -118,7 +109,7 @@
           </div>
         </div>
         <!-- /page content -->
-@include('backend.telecaller.layout.footer')
+@include('backend.sales.layout.footer')
 
 <script type="text/javascript">
 setTimeout(function() {
