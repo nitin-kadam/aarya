@@ -85,7 +85,7 @@ class TelecallerController extends Controller
 
 
     public function get_sales_branches(Request $request,$id){
-        $sales = User::where("branch_id",$id)->get();
+        $sales = User::where("branch_id",$id)->where('role','Sales')->get();
         return json_encode($sales);
     }
     public function leads_list(){
